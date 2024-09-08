@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Resume</title>
+    <link rel="shortcut icon" href="favicon-16x16.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            font-family: system-ui;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Form Styling */
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #151b29;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        .clearfix {
+            clear: both;
+        }
+
+        /* Resume Styling */
+        .clearfix {
+            clear: both;
+        }
+
+        .main {
+            height: 1150px;
+            width: 800px;
+            background-color: white;
+            box-shadow: 5px 7px 15px 5px #b9b6b6;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .top {
+            background-color: #151b29;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile {
+            width: 150px;
+            border-radius: 50%;
+        }
+
+        .p1 {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            margin: 0px;
+            margin-top: 10px;
+        }
+
+        .p2 {
+            font-size: 15px;
+            color: #c7c7c7;
+            margin: 0px;
+            margin-top: 0px;
+        }
+
+        .col-div4 {
+            width: 35%;
+            float: left;
+        }
+
+        .col-div-8 {
+            width: 62%;
+            float: left;
+        }
+
+        .line {
+            border-left: 1px solid #c7c7c7;
+            height: 800px;
+            width: 2%;
+            margin-top: 30px;
+            float: left;
+        }
+
+        .line-right {
+            border-right: 1px solid #c7c7c7;
+            height: 800px;
+            width: 2%;
+            margin-top: 30px;
+            float: right;
+        }
+
+        .content-box {
+            padding: 20px;
+        }
+
+        .head {
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .p3 {
+            color: #c7c7c7;
+            margin-bottom: -5px;
+        }
+
+        .fa {
+            color: #151b29;
+        }
+
+        .skills {
+            margin-left: -20px;
+            margin-bottom: 0px;
+        }
+
+        .skills li {
+            padding: 5px;
+        }
+
+        .skills li span {
+            color: #969696;
+        }
+
+        .p-4 {
+            font-size: 14px;
+            color: #969696;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #151b29;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+    
+    </style>
+</head>
+
+<body>
+
+    <!-- Form Section -->
+    <div class="container" id="form-container">
+        <h1>Enter Personal Information</h1>
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" />
+
+        <label for="profession">Profession</label>
+        <input type="text" id="profession" placeholder="Enter your profession" />
+
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" placeholder="Enter your phone number" />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" />
+
+        <label for="address">Address</label>
+        <input type="text" id="address" placeholder="Enter your address" />
+
+        <label for="experience">Experience</label>
+        <textarea id="experience" placeholder="Enter your experience"></textarea>
+
+        <label for="education">Education</label>
+        <input type="text" id="education" placeholder="Enter your education" />
+
+        <label for="skills">Skills (comma separated)</label>
+        <input type="text" id="skills" placeholder="Enter your skills" />
+
+        <button id="submit-btn">Generate Resume</button>
+    </div>
+
+    <!-- Resume Section -->
+    <div class="main">
+        <div class="top">
+            <img class="profile" src="no-profile-picture-icon.webp" alt="my picture" style="width: 20%; max-width: 100;"/>
+            <p class="p1" id="resume-name">Full Name</p>
+            <p class="p2" id="resume-profession">Profession</p>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="col-div4">
+            <div class="content-box">
+                <p id="toggle-contact" class="head" style="color: black;">Contact</p>
+                <div id="contact-section">
+                    <p class="p3"><i class="fa fa-phone"></i>&nbsp;&nbsp;<span id="resume-phone">Phone</span></p>
+                    <p class="p3"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<span id="resume-email">Email</span></p>
+                    <p class="p3"><i class="fa fa-home"></i>&nbsp;&nbsp;<span id="resume-address">Address</span></p>
+                </div>
+
+                <br />
+
+                <p id="toggle-skills" class="head" style="color: black;">Skills</p>
+                <div class="skill"><ul class="skills-section" id="resume-skills">
+                    
+                </ul></div>
+            </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="col-div8">
+            <div class="content-box">
+                <p class="head">Experience</p>
+                <p  class="p-4" id="resume-experience">Experience details will appear here.</p>
+
+                <p class="head">Education</p>
+                <p class="p-4" id="resume-education">Education details will appear here.</p>
+            </div>
+        </div>
+
+        <div class="line-right"></div>
+    </div>
+
+    <!-- TypeScript Code -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
